@@ -3,5 +3,5 @@ services:
     web:
         image: dragondjf/v2ray
         ports:
-            - 1080:1080
+            - 2080:2080
         restart: always

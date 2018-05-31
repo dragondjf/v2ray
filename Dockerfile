@@ -7,7 +7,7 @@ RUN mkdir -p /etc/v2ray
 
 COPY client-config.json /etc/v2ray/config.json
 
-EXPOSE 1080
+EXPOSE 2080
 
 ENV PATH /usr/bin/v2ray:$PATH
 CMD ["v2ray", "-config=/etc/v2ray/config.json"]

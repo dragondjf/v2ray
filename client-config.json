@@ -1,0 +1,50 @@
+{
+  "inbound": {
+    "port": 1080, // 监听端口
+    "protocol": "socks", // 入口协议为 SOCKS 5
+    "domainOverride": ["tls","http"],
+    "settings": {
+      "auth": "noauth"  //socks的认证设置，noauth 代表不认证，由于 socks 通常在客户端使用，所以这里不认证
+    }
+  },
+  "outbound": {
+    "protocol": "vmess", // 出口协议
+    "settings": {
+      "vnext": [
+        {
+          "address": "106.187.95.16", // 服务器地址，请修改为你自己的服务器 ip 或域名
+          "port": 21397,  // 服务器端口
+          "users": [
+            {
+              "id": "73f1e118-969d-40ef-9a81-6bdc5eaaf516",  // 用户 ID，必须与服务器端配置相同
+              "alterId": 64 // 此处的值也应当与服务器相同
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "outboundDetour": [
+    {
+      "protocol": "freedom",
+      "settings": {},
+      "tag": "direct" //如果要使用路由，这个 tag 是一定要有的，在这里 direct 就是 freedom 的一个标号，在路由中说 direct V2Ray 就知道是这里的 freedom 了
+    }
+  ],
+  "routing": {
+    "strategy": "rules",
+    "settings": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "type": "chinasites",
+          "outboundTag": "direct"
+        },
+        {
+          "type": "chinaip",
+          "outboundTag": "direct"
+        }
+      ]
+    }
+  }
+}

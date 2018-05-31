@@ -1,0 +1,7 @@
+version: "2.0"
+services:
+    web:
+        image: dragondjf/v2ray
+        ports:
+            - 1080:1080
+        restart: always

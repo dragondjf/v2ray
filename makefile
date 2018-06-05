@@ -8,4 +8,4 @@ buildServer:
 	cd server && docker build -t dragondjf/v2ray_server .
 
 server:buildServer
-	docker-compose up -d
+	cd server && docker-compose up -d

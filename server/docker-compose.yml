@@ -1,0 +1,7 @@
+version: "2.0"
+services:
+    web:
+        image: dragondjf/v2ray_server
+        ports:
+            - 21397:21397
+        restart: always
